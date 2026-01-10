@@ -1,0 +1,508 @@
+/* ==================== */
+/* Book Carousel        */
+/* Midnight Gallery     */
+/* ==================== */
+
+.book-carousel-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+/* Subtle spotlight effect */
+.book-carousel-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-radial-spotlight);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==================== */
+/* Book Container       */
+/* ==================== */
+
+.book-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  perspective: 2000px;
+}
+
+.book {
+  position: relative;
+  width: 90%;
+  max-width: 1400px;
+  height: 75vh;
+  max-height: 800px;
+  transform-style: preserve-3d;
+}
+
+/* ==================== */
+/* Individual Pages     */
+/* ==================== */
+
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform var(--duration-slower) var(--ease-smooth);
+  cursor: pointer;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: var(--shadow-card);
+}
+
+/* z-index stacking for pages */
+.page[data-page="1"] { z-index: 17; }
+.page[data-page="2"] { z-index: 16; }
+.page[data-page="3"] { z-index: 15; }
+.page[data-page="4"] { z-index: 14; }
+.page[data-page="5"] { z-index: 13; }
+.page[data-page="6"] { z-index: 12; }
+.page[data-page="7"] { z-index: 11; }
+.page[data-page="8"] { z-index: 10; }
+.page[data-page="9"] { z-index: 9; }
+.page[data-page="10"] { z-index: 8; }
+.page[data-page="11"] { z-index: 7; }
+.page[data-page="12"] { z-index: 6; }
+.page[data-page="13"] { z-index: 5; }
+.page[data-page="14"] { z-index: 4; }
+.page[data-page="15"] { z-index: 3; }
+.page[data-page="16"] { z-index: 2; }
+.page[data-page="17"] { z-index: 1; }
+
+.page.active {
+  z-index: 20;
+}
+
+.page.turning {
+  transform: rotateY(-180deg);
+  z-index: 25;
+}
+
+.page.turned {
+  transform: rotateY(-180deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ==================== */
+/* Page Content Overlay */
+/* ==================== */
+
+.page-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-10) var(--space-12);
+  background: var(--gradient-overlay);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 40%;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.page.turning .page-content,
+.page.turned .page-content {
+  opacity: 0;
+}
+
+.page-content h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-normal);
+  color: var(--color-white);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-3);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.page-content p {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  color: var(--neutral-300);
+  line-height: var(--leading-relaxed);
+  max-width: 500px;
+}
+
+.page-content .btn {
+  margin-top: var(--space-6);
+  align-self: flex-start;
+}
+
+/* ==================== */
+/* Navigation Controls  */
+/* ==================== */
+
+.book-controls {
+  position: fixed;
+  bottom: var(--space-10);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  z-index: var(--z-fixed);
+  width: 90%;
+  max-width: 600px;
+}
+
+/* Progress Bar */
+.progress-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--accent-gold);
+  border-radius: var(--radius-full);
+  transition: width var(--duration-normal) var(--ease-out);
+}
+
+.progress-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: var(--accent-gold);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 10px var(--accent-gold);
+  transition: left var(--duration-normal) var(--ease-out);
+}
+
+.page-counter {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+  letter-spacing: var(--tracking-wider);
+}
+
+/* Controls Row */
+.controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Book Now Button with Shimmer */
+.btn-book-now {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--neutral-950);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    110deg,
+    #B8941F 0%,
+    #D4AF37 25%,
+    #F5D76E 50%,
+    #D4AF37 75%,
+    #B8941F 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+  box-shadow:
+    0 4px 15px rgba(201, 169, 98, 0.4),
+    0 0 30px rgba(201, 169, 98, 0.2);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  transition: transform var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.btn-book-now:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 8px 25px rgba(201, 169, 98, 0.5),
+    0 0 40px rgba(201, 169, 98, 0.3);
+}
+
+.btn-book-now:active {
+  transform: translateY(-1px) scale(1);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.book-prev,
+.book-next {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(10px);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.book-prev:hover,
+.book-next:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.book-prev:disabled,
+.book-next:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.book-prev svg,
+.book-next svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--space-32);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-tertiary);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  animation: bounce 2s infinite;
+}
+
+.scroll-indicator svg {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-8px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-4px);
+  }
+}
+
+/* ==================== */
+/* Responsive Design    */
+/* ==================== */
+
+@media (max-width: 1024px) {
+  .book {
+    width: 95%;
+    height: 65vh;
+  }
+
+  .page-content {
+    padding: var(--space-8);
+  }
+
+  .page-content h1 {
+    font-size: var(--text-3xl);
+  }
+
+  .page-content p {
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: 768px) {
+  .book {
+    width: 100%;
+    height: 60vh;
+    border-radius: 0;
+  }
+
+  .page {
+    border-radius: 0;
+  }
+
+  .page-content {
+    padding: var(--space-6);
+    min-height: 50%;
+  }
+
+  .page-content h1 {
+    font-size: var(--text-2xl);
+  }
+
+  .page-content p {
+    font-size: var(--text-sm);
+  }
+
+  .book-controls {
+    bottom: var(--space-6);
+    gap: var(--space-4);
+  }
+
+  .controls-row {
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .btn-book-now {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-sm);
+  }
+
+  .nav-buttons {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .book-prev,
+  .book-next {
+    padding: var(--space-3) var(--space-5);
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .book {
+    height: 55vh;
+  }
+
+  .page-content h1 {
+    font-size: var(--text-xl);
+  }
+
+  .page-content p {
+    font-size: var(--text-sm);
+    display: none;
+  }
+
+  .book-prev span,
+  .book-next span {
+    display: none;
+  }
+
+  .book-prev,
+  .book-next {
+    padding: var(--space-3);
+  }
+}
+
+/* ==================== */
+/* Page Turn Animation  */
+/* ==================== */
+
+@keyframes pageTurn {
+  0% {
+    transform: perspective(2000px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(2000px) rotateY(-180deg);
+  }
+}
+
+@keyframes pageIntro {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.page.active:not(.turning):not(.turned) {
+  animation: pageIntro var(--duration-slow) var(--ease-out);
+}
+
+/* ==================== */
+/* Reduced Motion       */
+/* ==================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .page {
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+
+  .scroll-indicator {
+    animation: none;
+  }
+
+  .page.active:not(.turning):not(.turned) {
+    animation: none;
+  }
+}

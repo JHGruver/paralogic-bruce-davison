@@ -3,25 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to our amazing website with fun animations">
-    <title>My Awesome Website</title>
+    <meta name="description" content="Paralogic Presents - Bruce Davison: Lights / Canvas / Action. A special event featuring film, art, and live discussion.">
+    <title>Paralogic Presents | Bruce Davison</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/design-tokens.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/book-carousel.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <img src="ParalogicLogo.jpg" alt="Paralogic Presents" class="loader-logo-img">
+            </div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+            <p class="loader-tagline">Paralogic Presents</p>
+        </div>
+        <div class="loader-curtain loader-curtain-left"></div>
+        <div class="loader-curtain loader-curtain-right"></div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar load-animate" data-load-delay="0">
         <div class="container">
             <div class="logo">
-                <a href="#home">MyWebsite</a>
+                <a href="#home">
+                    <img src="ParalogicLogo.jpg" alt="Paralogic Presents" class="logo-img">
+                    <span class="logo-text">Paralogic Presents</span>
+                </a>
             </div>
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
+                <!-- <li><a href="#home" class="nav-link">Work</a></li> -->
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger">
+            <a href="#contact" class="btn btn-outline nav-cta">Book Now</a>
+            <div class="hamburger" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -29,104 +55,320 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in-up">Welcome to Something Amazing</h1>
-            <p class="fade-in-up delay-1">Creating beautiful experiences with modern web design</p>
-            <a href="#about" class="btn fade-in-up delay-2">Get Started</a>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <!-- <a href="#home" class="nav-link">Work</a> -->
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#contact" class="btn btn-outline" style="margin-top: 2rem;">Book Now</a>
+    </div>
+
+    <!-- Book Carousel Section -->
+    <section id="home" class="book-carousel-section load-animate" data-load-delay="100">
+        <div class="book-container">
+            <div class="book">
+                <!-- Page 1 -->
+                <div class="page active" data-page="1" style="background-image: url('images/Bruce_Davsion-003.jpg')">
+                    <div class="page-content">
+                        <h1>Capturing Life's Moments</h1>
+                        <p>Photography that tells your story</p>
+                    </div>
+                </div>
+
+                <!-- Page 2 -->
+                <div class="page" data-page="2" style="background-image: url('images/Bruce_Davsion-005.jpg')">
+                    <div class="page-content">
+                        <h1>Light & Shadow</h1>
+                        <p>Finding beauty in contrast</p>
+                    </div>
+                </div>
+
+                <!-- Page 3 -->
+                <div class="page" data-page="3" style="background-image: url('images/Bruce_Davsion-007.jpg')">
+                    <div class="page-content">
+                        <h1>Authentic Expressions</h1>
+                        <p>Raw emotion, genuine connections</p>
+                    </div>
+                </div>
+
+                <!-- Page 4 -->
+                <div class="page" data-page="4" style="background-image: url('images/Bruce_Davsion-008.jpg'); background-position: center top">
+                    <div class="page-content">
+                        <h1>Timeless Portraits</h1>
+                        <p>Memories that last generations</p>
+                    </div>
+                </div>
+
+                <!-- Page 5 -->
+                <div class="page" data-page="5" style="background-image: url('images/Bruce_Davsion-010.jpg')">
+                    <div class="page-content">
+                        <h1>Creative Vision</h1>
+                        <p>Where artistry meets technique</p>
+                    </div>
+                </div>
+
+                <!-- Page 6 -->
+                <div class="page" data-page="6" style="background-image: url('images/Bruce_Davsion-011.jpg')">
+                    <div class="page-content">
+                        <h1>Natural Beauty</h1>
+                        <p>Celebrating what makes you unique</p>
+                    </div>
+                </div>
+
+                <!-- Page 7 -->
+                <div class="page" data-page="7" style="background-image: url('images/Bruce_Davsion-012.jpg')">
+                    <div class="page-content">
+                        <h1>Cinematic Quality</h1>
+                        <p>Every frame tells a story</p>
+                    </div>
+                </div>
+
+                <!-- Page 8 -->
+                <div class="page" data-page="8" style="background-image: url('images/Bruce_Davsion-013.jpg')">
+                    <div class="page-content">
+                        <h1>Attention to Detail</h1>
+                        <p>Precision in every shot</p>
+                    </div>
+                </div>
+
+                <!-- Page 9 -->
+                <div class="page" data-page="9" style="background-image: url('images/Bruce_Davsion-014.jpg')">
+                    <div class="page-content">
+                        <h1>Emotional Depth</h1>
+                        <p>Images that move you</p>
+                    </div>
+                </div>
+
+                <!-- Page 10 -->
+                <div class="page" data-page="10" style="background-image: url('images/Bruce_Davsion-015-Edit.jpg')">
+                    <div class="page-content">
+                        <h1>Professional Excellence</h1>
+                        <p>Years of expertise, endless passion</p>
+                    </div>
+                </div>
+
+                <!-- Page 11 -->
+                <div class="page" data-page="11" style="background-image: url('images/Bruce_Davsion-016.jpg')">
+                    <div class="page-content">
+                        <h1>Unforgettable Moments</h1>
+                        <p>Preserved for eternity</p>
+                    </div>
+                </div>
+
+                <!-- Page 12 -->
+                <div class="page" data-page="12" style="background-image: url('images/Bruce_Davsion-017.jpg')">
+                    <div class="page-content">
+                        <h1>Artistic Expression</h1>
+                        <p>Photography as fine art</p>
+                    </div>
+                </div>
+
+                <!-- Page 13 -->
+                <div class="page" data-page="13" style="background-image: url('images/Bruce_Davsion-018.jpg')">
+                    <div class="page-content">
+                        <h1>Your Story, Visualized</h1>
+                        <p>Bringing narratives to life</p>
+                    </div>
+                </div>
+
+                <!-- Page 14 -->
+                <div class="page" data-page="14" style="background-image: url('images/Bruce_Davsion-023.jpg')">
+                    <div class="page-content">
+                        <h1>Collaborative Process</h1>
+                        <p>Creating together, achieving excellence</p>
+                    </div>
+                </div>
+
+                <!-- Page 15 -->
+                <div class="page" data-page="15" style="background-image: url('images/Bruce_Davsion-025.jpg')">
+                    <div class="page-content">
+                        <h1>Stunning Results</h1>
+                        <p>Beyond expectations, every time</p>
+                    </div>
+                </div>
+
+                <!-- Page 16 -->
+                <div class="page" data-page="16" style="background-image: url('images/Bruce_Davsion-029.jpg')">
+                    <div class="page-content">
+                        <h1>Legacy in Images</h1>
+                        <p>Creating heirlooms for tomorrow</p>
+                    </div>
+                </div>
+
+                <!-- Page 17 -->
+                <div class="page" data-page="17" style="background-image: url('images/Bruce_Davsion-003.jpg')">
+                    <div class="page-content">
+                        <h1>Let's Create Together</h1>
+                        <p>Your vision, my expertise</p>
+                        <a href="#contact" class="btn btn-primary btn-lg">Book a Session</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="book-controls">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 5.88%"></div>
+                        <div class="progress-indicator" style="left: 5.88%"></div>
+                    </div>
+                    <span class="page-counter">1 / 17</span>
+                </div>
+                <div class="controls-row">
+                    <a href="#contact" class="btn btn-book-now">Book Now</a>
+                    <div class="nav-buttons">
+                        <button class="book-prev" aria-label="Previous page" disabled>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                            <span>Previous</span>
+                        </button>
+                        <button class="book-next" aria-label="Next page">
+                            <span>Next</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="section section-darker">
         <div class="container">
-            <h2 class="section-title">About Us</h2>
-            <div class="about-content">
-                <div class="about-card slide-in-left">
-                    <div class="icon">🚀</div>
-                    <h3>Fast</h3>
-                    <p>Lightning-fast performance and optimization</p>
-                </div>
-                <div class="about-card slide-in-bottom">
-                    <div class="icon">💎</div>
-                    <h3>Beautiful</h3>
-                    <p>Stunning designs that capture attention</p>
-                </div>
-                <div class="about-card slide-in-right">
-                    <div class="icon">🎯</div>
-                    <h3>Precise</h3>
-                    <p>Pixel-perfect attention to detail</p>
-                </div>
+            <div class="section-header">
+                <p class="text-overline">About the Artist</p>
+                <h2 class="text-h2">Capturing Moments in Time</h2>
+                <p class="text-body-lg">With over a decade of experience, I specialize in creating authentic, emotionally resonant photography that tells your unique story.</p>
             </div>
-        </div>
-    </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🎨</div>
-                    <h3>Web Design</h3>
-                    <p>Beautiful, responsive websites that work on all devices</p>
+            <div class="card-grid">
+                <div class="card reveal">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                            <circle cx="12" cy="13" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Portrait Photography</h3>
+                    <p class="card-description">Professional headshots, family portraits, and personal branding sessions that capture your authentic self.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">⚡</div>
-                    <h3>Development</h3>
-                    <p>Modern web applications with cutting-edge technology</p>
+
+                <div class="card reveal">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Event Coverage</h3>
+                    <p class="card-description">From intimate gatherings to grand celebrations, documenting the moments that matter most.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">📱</div>
-                    <h3>Mobile First</h3>
-                    <p>Optimized experiences for mobile users</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">��</div>
-                    <h3>Maintenance</h3>
-                    <p>Ongoing support and updates for your website</p>
+
+                <div class="card reveal">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Fine Art Prints</h3>
+                    <p class="card-description">Gallery-quality prints and custom artwork to transform your space with stunning visual pieces.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="section section-dark">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <form class="contact-form">
-                <div class="form-group">
-                    <input type="text" placeholder="Your Name" required>
+            <div class="contact-section">
+                <div class="contact-image">
+                    <img src="itinerary.png" alt="Event Itinerary - Bruce Davison: Lights / Canvas / Action" loading="lazy">
                 </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Your Email" required>
+                <div class="contact-form-wrapper">
+                    <p class="text-overline">Get in Touch</p>
+                    <h2 class="text-h2" style="margin-bottom: var(--space-4);">Let's Work Together</h2>
+                    <p class="text-body-lg" style="margin-bottom: var(--space-8);">Ready to create something beautiful? Send me a message and let's discuss your vision.</p>
+
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input form-textarea" placeholder="Tell me about your project..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-full">Send Message</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <textarea rows="5" placeholder="Your Message" required></textarea>
-                </div>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 MyWebsite. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#" class="social-icon">GitHub</a>
-                <a href="#" class="social-icon">Twitter</a>
-                <a href="#" class="social-icon">LinkedIn</a>
+            <div class="footer-content">
+                <div>
+                    <img src="ParalogicLogo.jpg" alt="Paralogic Presents" class="footer-logo-img">
+                    <p class="footer-tagline">Paralogic Presents</p>
+                </div>
+
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                    <a href="mailto:hello@mikem.com" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="footer-divider"></div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Paralogic Presents. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/book-carousel.js"></script>
 </body>
 </html>
