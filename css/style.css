@@ -134,7 +134,10 @@
   width: 28px;
   height: 28px;
   cursor: pointer;
-  z-index: var(--z-modal);
+  position: fixed;
+  right: var(--gutter);
+  top: 18px;
+  z-index: calc(var(--z-overlay) + 10);
 }
 
 .hamburger span {
