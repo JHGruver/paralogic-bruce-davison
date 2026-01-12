@@ -775,8 +775,21 @@
     height: 64px;
   }
 
+  .navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .nav-menu {
     display: none;
+  }
+
+  .nav-cta {
+    margin-left: auto;
+    margin-right: var(--space-4);
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
   }
 
   .hamburger {
