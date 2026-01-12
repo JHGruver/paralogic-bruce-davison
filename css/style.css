@@ -639,13 +639,15 @@
   width: 80px;
   height: auto;
   border-radius: var(--radius-full);
-  margin-bottom: var(--space-2);
 }
 
 .footer-tagline {
-  font-size: var(--text-sm);
-  color: var(--text-tertiary);
-  margin-top: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  letter-spacing: var(--tracking-tight);
+  margin-top: var(--space-3);
 }
 
 .footer-social {
