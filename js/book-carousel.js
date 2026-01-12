@@ -6,7 +6,7 @@
 class BookCarousel {
     constructor() {
         this.currentPage = 1;
-        this.totalPages = 17;
+        this.totalPages = 16;
         this.isAnimating = false;
         this.autoPlayInterval = null;
         this.autoPlayDelay = 5000; // 5 seconds
