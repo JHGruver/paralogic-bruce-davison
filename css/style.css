@@ -520,6 +520,103 @@
 }
 
 /* ==================== */
+/* Itinerary Section    */
+/* ==================== */
+
+.itinerary-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+}
+
+.itinerary-day {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.itinerary-day:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(201, 169, 98, 0.2);
+  transform: translateY(-4px);
+}
+
+.day-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.day-name {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  color: var(--accent-gold);
+  letter-spacing: var(--tracking-tight);
+}
+
+.day-theme {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+}
+
+.day-events {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.event-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.event-marker {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  background: var(--accent-gold);
+  border-radius: var(--radius-full);
+  margin-top: 8px;
+  box-shadow: 0 0 12px rgba(201, 169, 98, 0.4);
+}
+
+.event-content h4 {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.event-content p {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* Responsive Itinerary */
+@media (max-width: 1024px) {
+  .itinerary-timeline {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .itinerary-day {
+    padding: var(--space-6);
+  }
+}
+
+/* ==================== */
 /* Footer               */
 /* ==================== */
 
