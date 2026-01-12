@@ -132,24 +132,43 @@ revealElements.forEach(el => {
 });
 
 // ====================
-// Form Handling
+// Form Handling (Formspree)
 // ====================
 
 const contactForm = document.querySelector('.contact-form');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
 
-        // Show success message
-        showNotification('Message sent successfully! We\'ll be in touch soon.', 'success');
+        // Show loading state
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
 
-        // Reset form
-        contactForm.reset();
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                showNotification('Message sent successfully! Mike will be in touch soon.', 'success');
+                contactForm.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            showNotification('Oops! Something went wrong. Please try again.', 'error');
+        } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
     });
 }
 
