@@ -10,6 +10,23 @@
 const loadingScreen = document.getElementById('loadingScreen');
 const loadAnimateElements = document.querySelectorAll('.load-animate');
 
+// Check if we should skip the loading animation
+// Skip if user has already visited in this session (navigating from About Us, etc.)
+const shouldSkipLoader = sessionStorage.getItem('hasVisited') === 'true';
+
+// Mark that user has visited (for subsequent navigations)
+sessionStorage.setItem('hasVisited', 'true');
+
+// Function to skip loader and show content immediately
+function skipLoader() {
+    if (loadingScreen) {
+        loadingScreen.classList.add('loaded', 'hidden');
+    }
+    loadAnimateElements.forEach(el => {
+        el.classList.add('loaded');
+    });
+}
+
 // Minimum time to show loader (in ms) for a polished experience
 const MIN_LOADER_TIME = 2200;
 const loaderStartTime = Date.now();
@@ -38,8 +55,11 @@ function revealPage() {
     }, remainingTime);
 }
 
-// Check if page is already loaded
-if (document.readyState === 'complete') {
+// Decide whether to show or skip the loader
+if (shouldSkipLoader) {
+    // User is navigating from another page - skip loader
+    skipLoader();
+} else if (document.readyState === 'complete') {
     revealPage();
 } else {
     // Wait for all resources to load
