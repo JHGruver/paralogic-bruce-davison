@@ -16,9 +16,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/design-tokens.css?v=7">
-    <link rel="stylesheet" href="css/style.css?v=7">
-    <link rel="stylesheet" href="css/book-carousel.css?v=7">
+    <link rel="stylesheet" href="css/design-tokens.css?v=8">
+    <link rel="stylesheet" href="css/style.css?v=8">
+    <link rel="stylesheet" href="css/book-carousel.css?v=8">
 </head>
 <body>
     <!-- Loading Screen -->
@@ -242,26 +242,40 @@
                 <p class="text-body-lg">Emmy and Golden Globe-winning actor, acclaimed painter, and the star of iconic films including X-Men and Willard.</p>
             </div>
 
-            <div class="card-grid">
-                <div class="card reveal">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
-                            <line x1="7" y1="2" x2="7" y2="22"></line>
-                            <line x1="17" y1="2" x2="17" y2="22"></line>
-                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                            <line x1="2" y1="7" x2="7" y2="7"></line>
-                            <line x1="2" y1="17" x2="7" y2="17"></line>
-                            <line x1="17" y1="17" x2="22" y2="17"></line>
-                            <line x1="17" y1="7" x2="22" y2="7"></line>
-                        </svg>
+            <!-- Filmography Showcase -->
+            <div class="filmography-showcase reveal">
+                <div class="film-card">
+                    <div class="film-image">
+                        <img src="Willard.jpg" alt="Bruce Davison in Willard (1971)" loading="lazy">
+                        <div class="film-overlay">
+                            <span class="film-year">1971</span>
+                        </div>
                     </div>
-                    <h3 class="card-title">Award-Winning Actor</h3>
-                    <p class="card-description">From Senator Kelly in X-Men to his breakout role in Willard, Bruce has captivated audiences for over five decades in film and television.</p>
+                    <div class="film-info">
+                        <h3 class="film-title">Willard</h3>
+                        <p class="film-role">Lead Role</p>
+                        <p class="film-description">Bruce's breakout performance as the lonely outsider who befriends a colony of rats became a cult classic and launched his career.</p>
+                    </div>
                 </div>
+                <div class="film-card">
+                    <div class="film-image">
+                        <img src="Kelly.jpg" alt="Bruce Davison as Senator Kelly in X-Men (2000)" loading="lazy">
+                        <div class="film-overlay">
+                            <span class="film-year">2000</span>
+                        </div>
+                    </div>
+                    <div class="film-info">
+                        <h3 class="film-title">X-Men</h3>
+                        <p class="film-role">Senator Robert Kelly</p>
+                        <p class="film-description">A pivotal role in the blockbuster that launched the modern superhero film era, showcasing Bruce's range in the Marvel universe.</p>
+                    </div>
+                </div>
+            </div>
 
-                <div class="card reveal">
-                    <div class="card-icon">
+            <!-- Artist Cards -->
+            <div class="artist-highlights reveal">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
                             <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
@@ -269,12 +283,11 @@
                             <circle cx="11" cy="11" r="2"></circle>
                         </svg>
                     </div>
-                    <h3 class="card-title">Accomplished Painter</h3>
-                    <p class="card-description">Beyond the screen, Bruce is a talented visual artist whose paintings reflect the same depth and emotion he brings to his performances.</p>
+                    <h3>Accomplished Painter</h3>
+                    <p>Beyond the screen, Bruce is a talented visual artist whose paintings reflect the same depth and emotion he brings to his performances.</p>
                 </div>
-
-                <div class="card reveal">
-                    <div class="card-icon">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                             <circle cx="9" cy="7" r="4"></circle>
@@ -282,8 +295,8 @@
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                         </svg>
                     </div>
-                    <h3 class="card-title">Meet & Greet Experience</h3>
-                    <p class="card-description">An intimate weekend featuring film screenings, live Q&A sessions, an art gallery showcase, and personal photo opportunities with Bruce.</p>
+                    <h3>Meet & Greet Experience</h3>
+                    <p>An intimate weekend featuring film screenings, live Q&A sessions, an art gallery showcase, and personal photo opportunities.</p>
                 </div>
             </div>
         </div>
