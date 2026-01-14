@@ -227,54 +227,10 @@
   width: 100%;
 }
 
-/* Book Now Button with Shimmer */
+/* Book Now Button - Uses unified .btn-gold from style.css */
+/* .btn-book-now class kept for carousel-specific overrides */
 .btn-book-now {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-sans);
-  font-size: var(--text-base);
-  font-weight: var(--font-bold);
-  color: var(--neutral-950);
-  padding: var(--space-4) var(--space-8);
-  border-radius: var(--radius-full);
-  background: linear-gradient(
-    110deg,
-    #B8941F 0%,
-    #D4AF37 25%,
-    #F5D76E 50%,
-    #D4AF37 75%,
-    #B8941F 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 3s ease-in-out infinite;
-  box-shadow:
-    0 4px 15px rgba(201, 169, 98, 0.4),
-    0 0 30px rgba(201, 169, 98, 0.2);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wider);
-  transition: transform var(--duration-fast) var(--ease-out),
-              box-shadow var(--duration-fast) var(--ease-out);
-}
-
-.btn-book-now:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow:
-    0 8px 25px rgba(201, 169, 98, 0.5),
-    0 0 40px rgba(201, 169, 98, 0.3);
-}
-
-.btn-book-now:active {
-  transform: translateY(-1px) scale(1);
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+  /* Inherits from .btn-gold, add carousel-specific styles here if needed */
 }
 
 /* Navigation Buttons */

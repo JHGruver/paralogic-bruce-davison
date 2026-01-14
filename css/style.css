@@ -259,6 +259,46 @@
   padding: var(--space-4) var(--space-8);
 }
 
+/* Gold CTA Button (Premium Shimmer) */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  color: var(--neutral-950);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-full);
+  background: var(--gradient-gold-btn);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+  box-shadow: var(--gold-btn-shadow);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  transition: transform var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+  white-space: nowrap;
+}
+
+.btn-gold:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--gold-btn-shadow-hover);
+}
+
+.btn-gold:active {
+  transform: translateY(-1px) scale(1);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 /* ==================== */
 /* Typography Classes   */
 /* ==================== */
