@@ -367,6 +367,50 @@
   color: var(--accent-gold);
 }
 
+/* ==================== */
+/* Hero Header          */
+/* ==================== */
+
+.hero-header {
+  padding-top: calc(72px + var(--space-16));
+  padding-bottom: var(--space-12);
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  text-align: center;
+}
+
+.hero-header .container {
+  max-width: var(--container-lg);
+}
+
+.hero-header .text-overline {
+  margin-bottom: var(--space-4);
+  font-size: var(--text-sm);
+}
+
+.hero-header .text-display {
+  margin-bottom: var(--space-6);
+  background: var(--gradient-gold-btn);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-header .text-body-lg {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .hero-header {
+    padding-top: calc(72px + var(--space-10));
+    padding-bottom: var(--space-8);
+  }
+
+  .hero-header .text-display {
+    font-size: var(--text-3xl);
+  }
+}
+
 .text-mono {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
