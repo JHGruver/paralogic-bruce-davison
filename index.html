@@ -16,9 +16,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/design-tokens.css?v=10">
-    <link rel="stylesheet" href="css/style.css?v=10">
-    <link rel="stylesheet" href="css/book-carousel.css?v=10">
+    <link rel="stylesheet" href="css/design-tokens.css?v=11">
+    <link rel="stylesheet" href="css/style.css?v=11">
+    <link rel="stylesheet" href="css/book-carousel.css?v=11">
 </head>
 <body>
     <!-- Loading Screen -->
@@ -421,6 +421,14 @@
                         </div>
                         <div class="form-group">
                             <input type="email" name="email" class="form-input" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="interest" class="form-input form-select" required>
+                                <option value="" disabled selected>What are you interested in?</option>
+                                <option value="Commission Painting">Commission Painting</option>
+                                <option value="Meet and Greet Event">Meet and Greet Event</option>
+                                <option value="Not Sure">Not Sure</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <textarea name="message" class="form-input form-textarea" placeholder="Tell me about your project..." required></textarea>
