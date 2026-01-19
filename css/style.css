@@ -400,6 +400,10 @@
   margin: 0 auto;
 }
 
+.hero-header .hero-cta {
+  margin-top: var(--space-8);
+}
+
 @media (max-width: 768px) {
   .hero-header {
     padding-top: calc(72px + var(--space-10));
