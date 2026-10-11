@@ -221,7 +221,7 @@ function showNotification(message, type = 'info') {
         padding: '16px 24px',
         background: 'var(--neutral-900)',
         color: 'var(--text-primary)',
-        borderRadius: 'var(--radius-lg)',
+        borderRadius: '0',
         boxShadow: 'var(--shadow-2xl)',
         border: `1px solid ${colors[type]}`,
         zIndex: '10000',
