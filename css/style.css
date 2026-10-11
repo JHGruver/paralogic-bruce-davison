@@ -1762,3 +1762,93 @@
     text-align: center;
   }
 }
+
+
+/* ==================== */
+/* Themed dropdown      */
+/* ==================== */
+
+.dd { position: relative; }
+
+.dd-btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--border-secondary);
+  border-radius: 0;
+  padding: var(--space-4) var(--space-12) var(--space-4) var(--space-5);
+  font-family: inherit;
+  font-size: var(--text-base);
+  color: var(--text-tertiary);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.dd.has-value .dd-btn { color: var(--text-primary); }
+.dd-btn:hover { border-color: var(--neutral-500); }
+.dd-btn:focus-visible, .dd.open .dd-btn {
+  outline: none;
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.15);
+}
+.dd.invalid .dd-btn { border-color: var(--color-error); box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15); }
+
+.dd-btn svg {
+  position: absolute;
+  right: var(--space-4);
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin-top: -8px;
+  fill: none;
+  stroke: var(--neutral-400);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .3s var(--ease-out), stroke .25s;
+}
+.dd.open .dd-btn svg { transform: rotate(180deg); stroke: var(--accent-gold); }
+
+.dd-list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  z-index: 50;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  background: var(--neutral-900);
+  border: 1px solid var(--accent-gold-dark);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, .7), 0 0 30px rgba(201, 169, 98, .08);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  clip-path: inset(0 0 100% 0);
+  transition: opacity .25s, transform .3s var(--ease-out), clip-path .35s var(--ease-out), visibility 0s .35s;
+}
+.dd.open .dd-list { opacity: 1; visibility: visible; transform: none; clip-path: inset(0); transition-delay: 0s; }
+
+.dd-list li {
+  position: relative;
+  padding: 12px 16px 12px 20px;
+  color: var(--neutral-300);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: background .2s, color .2s, padding .25s;
+}
+.dd-list li::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--accent-gold); transform: scaleY(0); transition: transform .25s; }
+.dd-list li.hi { background: var(--gradient-gold-subtle); color: #fff; padding-left: 26px; }
+.dd-list li.hi::before, .dd-list li.sel::before { transform: scaleY(1); }
+.dd-list li.sel { color: var(--accent-gold-light); }
+.dd-list li.sel::after { content: "\2713"; position: absolute; right: 16px; color: var(--accent-gold); }
+
+/* Small phones: keep logo, CTA and hamburger on one line */
+@media (max-width: 480px) {
+  .logo-text { white-space: nowrap; font-size: var(--text-base); margin-left: var(--space-2); }
+  .logo-img { height: 40px; }
+  .navbar .nav-cta { margin-right: var(--space-3); padding: var(--space-2) var(--space-3); white-space: nowrap; }
+}
+@media (max-width: 380px) { .logo-text { display: none; } }

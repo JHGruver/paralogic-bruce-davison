@@ -161,6 +161,15 @@ if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        // themed dropdown replaces the native (now hidden) select, so validate it here
+        const ddSelect = contactForm.querySelector('select[data-required]');
+        if (ddSelect && !ddSelect.value) {
+            const dd = ddSelect.nextElementSibling;
+            dd.classList.add('invalid');
+            dd.querySelector('.dd-btn').focus();
+            return;
+        }
+
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
 
@@ -272,3 +281,46 @@ document.addEventListener('keydown', (e) => {
 
 console.log('%cMike M Photography', 'font-size: 24px; color: #C9A962; font-weight: bold; font-family: Georgia, serif;');
 console.log('%cCapturing moments in time', 'font-size: 14px; color: #A1A1AA;');
+
+
+// ====================
+// Themed dropdown (replaces native <select class="form-select">, whose option list can't be styled)
+// ====================
+
+document.querySelectorAll('select.form-select').forEach(sel => {
+    const opts = [...sel.options].filter(o => !o.disabled);
+    const placeholder = (sel.querySelector('option[disabled]') || {}).textContent || 'Select…';
+    if (sel.required) { sel.removeAttribute('required'); sel.setAttribute('data-required', ''); }
+    sel.style.display = 'none';
+
+    const dd = document.createElement('div');
+    dd.className = 'dd';
+    dd.innerHTML = `<button type="button" class="dd-btn" aria-haspopup="listbox" aria-expanded="false">
+        <span class="dd-val">${placeholder}</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <ul class="dd-list" role="listbox" tabindex="-1">${opts.map(o => `<li role="option" data-v="${o.value}">${o.textContent}</li>`).join('')}</ul>`;
+    sel.after(dd);
+
+    const btn = dd.querySelector('.dd-btn'), list = dd.querySelector('.dd-list'), val = dd.querySelector('.dd-val');
+    const items = [...list.children];
+    let hi = -1;
+    const mark = i => { hi = (i + items.length) % items.length; items.forEach((el, k) => el.classList.toggle('hi', k === hi)); };
+    const open = () => { dd.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); mark(hi < 0 ? 0 : hi); };
+    const close = () => { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); };
+    const pick = i => {
+        items.forEach((el, k) => { el.classList.toggle('sel', k === i); el.toggleAttribute('aria-selected', k === i); });
+        sel.value = items[i].dataset.v; val.textContent = items[i].textContent;
+        dd.classList.add('has-value'); dd.classList.remove('invalid'); hi = i; close(); btn.focus();
+    };
+    btn.addEventListener('click', () => (dd.classList.contains('open') ? close() : open()));
+    list.addEventListener('click', e => { const li = e.target.closest('li'); if (li) pick(items.indexOf(li)); });
+    items.forEach((el, k) => el.addEventListener('mouseenter', () => mark(k)));
+    btn.addEventListener('keydown', e => {
+        const isOpen = dd.classList.contains('open');
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); isOpen ? mark(hi + (e.key === 'ArrowDown' ? 1 : -1)) : open(); }
+        else if ((e.key === 'Enter' || e.key === ' ') && isOpen) { e.preventDefault(); pick(hi); }
+        else if (e.key === 'Escape' && isOpen) { close(); }
+    });
+    document.addEventListener('click', e => { if (!dd.contains(e.target)) close(); });
+    sel.form && sel.form.addEventListener('reset', () => { sel.value = ''; val.textContent = placeholder; dd.classList.remove('has-value', 'invalid'); items.forEach(el => el.classList.remove('sel')); });
+});
