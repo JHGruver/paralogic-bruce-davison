@@ -1852,3 +1852,99 @@
   .navbar .nav-cta { margin-right: var(--space-3); padding: var(--space-2) var(--space-3); white-space: nowrap; }
 }
 @media (max-width: 380px) { .logo-text { display: none; } }
+
+
+/* ==================== */
+/* Credits: photographer + designer */
+/* ==================== */
+
+.credits-block {
+  margin-top: var(--space-20);
+  padding-top: var(--space-16);
+  border-top: 1px solid var(--border-primary);
+}
+
+.credit-intro {
+  max-width: 760px;
+  margin: 0 auto var(--space-12);
+  text-align: center;
+}
+.credit-intro .text-body-lg { color: var(--text-primary); margin-bottom: var(--space-6); }
+.credit-intro .text-body { margin-bottom: var(--space-4); }
+
+.photo-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.photo { margin: 0; position: relative; }
+.photo a { display: block; overflow: hidden; position: relative; border: 1px solid var(--border-primary); transition: border-color var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out); }
+.photo img { display: block; width: 100%; aspect-ratio: 2 / 3; object-fit: cover; filter: grayscale(.15) brightness(.92); transition: transform .9s var(--ease-out), filter .5s; }
+.photo a:hover { border-color: var(--accent-gold); box-shadow: 0 20px 50px rgba(0,0,0,.55), 0 0 40px rgba(201,169,98,.15); }
+.photo a:hover img { transform: scale(1.05); filter: none; }
+.photo figcaption {
+  margin-top: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+.credit-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+.credit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--font-medium);
+  color: var(--accent-gold);
+  letter-spacing: var(--tracking-wide);
+}
+.credit-link svg { width: 18px; height: 18px; transition: transform var(--duration-normal) var(--ease-out); }
+.credit-link:hover svg { transform: translateX(6px); }
+.credit-link:hover { color: var(--accent-gold-light); }
+.photo-credit { font-size: var(--text-xs); color: var(--text-tertiary); letter-spacing: var(--tracking-wider); text-transform: uppercase; }
+
+.design-credit {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-10);
+  margin-top: var(--space-20);
+  padding: var(--space-10);
+  border: 1px solid var(--border-secondary);
+  background: linear-gradient(180deg, rgba(24,24,27,.8), rgba(9,9,11,.6));
+  transition: border-color var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+}
+.design-credit:hover { border-color: var(--accent-gold-dark); box-shadow: 0 0 50px rgba(201,169,98,.07); }
+.design-credit-icon { width: 96px; height: 96px; flex: 0 0 auto; object-fit: contain; }
+.design-credit-title { font-family: var(--font-display); font-weight: var(--font-normal); font-size: var(--text-2xl); color: var(--text-primary); margin: var(--space-2) 0 var(--space-4); }
+.design-credit-text .text-body { margin-bottom: var(--space-6); max-width: 62ch; }
+
+@media (max-width: 900px) {
+  .photo-row { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .credits-block { margin-top: var(--space-16); padding-top: var(--space-12); }
+  .design-credit { grid-template-columns: 1fr; justify-items: start; gap: var(--space-6); padding: var(--space-6); margin-top: var(--space-12); }
+  .design-credit-icon { width: 72px; height: 72px; }
+  .credit-cta { flex-direction: column; gap: var(--space-3); }
+}
+
+.footer-credits { margin-bottom: var(--space-2); }
+
+@media (max-width: 900px) {
+  .design-credit { grid-template-columns: auto 1fr; }
+  .design-credit > .btn { grid-column: 1 / -1; justify-self: start; }
+}
+.footer-credits p { display: inline-flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: var(--space-2); }
+.footer-credits .footer-credit-link { gap: var(--space-2); }
